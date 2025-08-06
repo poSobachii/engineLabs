@@ -1,0 +1,51 @@
+<div class="auth-container">
+  <h2 class="text-center mb-4">Login</h2>
+  
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username"
+        class="form-control" 
+        [(ngModel)]="loginData.username" 
+        required 
+        #username="ngModel">
+      <div *ngIf="username.invalid && username.touched" class="text-danger mt-1">
+        Username is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password"
+        class="form-control" 
+        [(ngModel)]="loginData.password" 
+        required 
+        #password="ngModel">
+      <div *ngIf="password.invalid && password.touched" class="text-danger mt-1">
+        Password is required
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn btn-primary"
+      [disabled]="loginForm.invalid || isLoading">
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </form>
+
+  <div class="auth-link">
+    <p>Don't have an account? <a routerLink="/register">Sign up here</a></p>
+  </div>
+</div>

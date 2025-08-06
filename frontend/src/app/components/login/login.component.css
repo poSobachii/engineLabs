@@ -1,0 +1,14 @@
+/* Login component specific styles */
+.auth-container {
+  background-color: #ffffff;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
